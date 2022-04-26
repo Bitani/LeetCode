@@ -12,6 +12,7 @@ public:
     for(int i=0; i<nums.size(); i++) 
     {
         right_sum = right_sum-nums[i];
+        
         if(left_sum == right_sum) 
         {
             return i;
