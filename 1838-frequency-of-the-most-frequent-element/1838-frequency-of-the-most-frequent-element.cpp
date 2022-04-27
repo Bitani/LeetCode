@@ -7,8 +7,7 @@ public:
     {
         sort(nums.begin(), nums.end());
         const int N = nums.size();
-        int  left=0;
-        int total=0;
+        int  left=0,total=0;
         //Expands the window by moving the right pointer
         for(int right=0; right<N; right++)
         {
