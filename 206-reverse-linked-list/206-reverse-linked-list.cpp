@@ -21,10 +21,7 @@ public:
             
             after = temp->next; 
   
-            
             temp->next = prev; 
-  
-            
             prev = temp; 
             temp = after; 
         } 
