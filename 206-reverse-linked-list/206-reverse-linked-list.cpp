@@ -15,10 +15,8 @@ public:
         ListNode *temp = head; 
         ListNode *prev = NULL, *after = NULL; 
   
-  
         while (temp != NULL) 
-        { 
-            
+        {  
             after = temp->next; 
             temp->next = prev; 
             prev = temp; 
