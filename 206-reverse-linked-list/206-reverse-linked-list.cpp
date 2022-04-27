@@ -8,20 +8,25 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+// Time Complexity of 0(n).
+
+// Space Complexity of O(1).
+
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-     
-        ListNode *temp = head, *prev = NULL, *after = NULL; 
+     //temp is indicating the current position of the pointer on the list.
+       ListNode *temp = head, *pre = NULL, *after = NULL; 
   
         while (temp != NULL) 
         {  
             after = temp->next; 
-            temp->next = prev; 
-            prev = temp; 
+            temp->next = pre; // For reversing the temp's pointer
+            pre = temp; 
             temp = after; 
         } 
        
-        return prev;
+        return pre; // or "return head;" Either is possible
     }
 };
