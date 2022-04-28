@@ -1,35 +1,32 @@
 // Time Comlexity of O(n).
 
-// Space Complexity of O(n) due to storing the array elements in the hash(unordered) set.
+// Space Complexity of O(1).
 
 class Solution {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& array) 
     {
-     int N = array.size();
+    sort(array.begin(),array.end());
         
-    sort(array.begin(), array.end());
+     int N =array.size();
         
-    unordered_set<int> set; 
-        
-    int abs = INT_MAX;
-        
+     long abs_diff=LONG_MAX;
+
     for(int i=0;i<N-1;i++)
     {
-        abs = min(abs, array[i+1] - array[i]);
-        set.insert(array[i]);
-    }
-        
-    set.insert(array[N-1]);
-        
-    vector<vector<int>> vec;
-        
-    for(int i=0;i<N;i++)
-    {
-        if(set.count(array[i]-abs))
+        if(abs(array[i]-array[i+1])<abs_diff)
         {
-            vec.push_back({array[i]-abs, array[i]});
+            abs_diff=abs(array[i]-array[i+1]);
         }
+    }
+    
+    vector<vector<int>>vec;
+    for(int i=1;i<N;i++)
+    {
+        if(abs(array[i]-array[i-1]==abs_diff))
+           {
+               vec.push_back({array[i-1],array[i]});
+           }
     }
     return vec;
   }
