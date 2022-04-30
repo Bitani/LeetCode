@@ -3,10 +3,10 @@
 
 
 class MinStack {
-    int stack[10000];
-    int min[10000];
     int top_pt;
     int min_pt;
+    int stack[10000];
+    int min[10000];
 public:
     
     MinStack() {
