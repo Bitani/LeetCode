@@ -1,35 +1,32 @@
-
 class Solution {
 public:
-    string sortSentence(string sen) 
-    {
-        const int Sentence_words = 9;
-        
-        string total_word[Sentence_words];
-        
+    string sortSentence(string sen) {
+         int N = sen.size();
         string word;
-        
-        for(int i=0; i<sen.size(); i++)
+        vector<string>vec(10);
+        for(int i = 0; i < N; i++)
         {
-            char lett_cha = sen[i];
-            
-            if (lett_cha >='0' && lett_cha <='9')
+            if(sen[i] >= 48 && sen[i] <= 57) // it's implying it's a number where ASCII value starts from 48.
             {
-                total_word[lett_cha-'0'-1] = word;
+                vec[sen[i]-48] = word + " ";
                 word = "";
+                i++;
             }
-            else if (lett_cha != ' ') 
-            {
-                word = word + lett_cha;
-            }
+           else
+           {
+              word += sen[i];  
+           }
+              
         }
+        string total;
         
-        for(int i=1; i < Sentence_words; i++)
+        for(string str:vec)
         {
-            if (total_word[i].size() <= 0 ) 
-                continue;
-            total_word[0] = total_word[0] +" " + total_word[i];
+           total+=str; 
         }
-        return total_word[0];
+         
+        total.pop_back(); // useful for removing the space after the last step
+        
+        return total;
     }
 };
