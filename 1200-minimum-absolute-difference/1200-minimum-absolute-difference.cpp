@@ -1,6 +1,6 @@
-// Time Comlexity of O(n).
+// Time Comlexity of O(nlogn).
 
-// Space Complexity of O(1).
+// Space Complexity of O(n).
 
 class Solution {
 public:
@@ -10,22 +10,19 @@ public:
         
      int N =array.size();
         
-     long abs_diff=LONG_MAX;
+     int abs_diff=INT_MAX;
 
-    for(int i=0;i<N-1;i++)
+    for(int i=0;i<N-1;++i)
     {
-        if(abs(array[i]-array[i+1])<abs_diff)
-        {
-            abs_diff=abs(array[i]-array[i+1]);
-        }
+            abs_diff = min(array[i+1]-array[i],abs_diff);
     }
     
     vector<vector<int>>vec;
-    for(int i=1;i<N;i++)
+    for(int i=0;i<N-1;++i)
     {
-        if(abs(array[i]-array[i-1]==abs_diff))
+        if(array[i+1]-array[i]==abs_diff)
            {
-               vec.push_back({array[i-1],array[i]});
+               vec.push_back({array[i],array[i+1]});
            }
     }
     return vec;
