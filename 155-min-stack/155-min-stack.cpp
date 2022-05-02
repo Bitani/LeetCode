@@ -1,56 +1,34 @@
-// Time Comlexity of O(1).
-// Space Complexity of O(1).
+//Time complexity of O (n)
 
+// Space complexity of O(n)
 
 class MinStack {
-    int top_pt;
-    int min_pt;
-    int stack[10000];
-    int min[10000];
 public:
+    stack<pair<int,int>> st;
     
-    MinStack() {
-       top_pt = -1;
-       min_pt = -1;
-    }
-    
-    void push(int val) 
+    void push(int n) 
     {
-        if(top_pt >= 10000)
+        int minimum = n;
+        
+        if(!st.empty())
         {
-            return;
+            minimum = min(n,st.top().second);
         }
-        stack[++top_pt]= val;
-        if(min_pt>=0)
-        {
-            if(min[min_pt] > val)
-            {
-              min[++min_pt] = val;  
-            }
-              else
-                {
-                    min[min_pt+1] = min[min_pt];
-                    min_pt++;
-                }
-        }
-        else
-            min[++min_pt] = val;
+        st.push(make_pair(n,minimum));
     }
     
-    void pop() {
-        if(top_pt < 0)
-        {
-            return;
-        }
-        top_pt -= 1;
-        min_pt -= 1; 
+    void pop() 
+    {
+        st.pop();
     }
     
-    int top() {
-       return stack[top_pt]; 
+    int top() 
+    {
+        return st.top().first;
     }
     
-    int getMin() {
-      return min[min_pt];  
+    int getMin()
+    {
+        return st.top().second;
     }
 };
