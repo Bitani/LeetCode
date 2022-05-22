@@ -8,16 +8,27 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// Time Complexity 0(n).
+
+// Space Comlexity of 0(1).
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        ListNode*temp=head,*temp2=head;
-    
-        while(temp!=NULL && temp->next!=NULL)
+        ListNode*temp=head;
+        int size=0;
+        while(temp != NULL)
         {
-            temp2=temp2->next;
-            temp=temp->next->next;
+            temp = temp->next;
+            size++;
         }
-        return temp2;
+        int destination = (size/2)+1;
+        int index = 1;
+        temp = head; 
+        while(index < destination)
+        {
+            temp = temp->next;
+            index++;
+        }
+        return temp;
     }
 };
