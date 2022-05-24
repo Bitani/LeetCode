@@ -27,6 +27,6 @@ public:
             temp = after; 
         } 
        
-        return pre; // or "return head;" Either is possible
+        return pre;
     }
 };
