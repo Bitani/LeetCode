@@ -10,14 +10,16 @@
  */
 class Solution {
 public:
+          int total = 0 , count = 0;
     int getDecimalValue(ListNode* head) {
-        ListNode* temp;
-        int total = 0;
-        while(temp != NULL)
+        if(head == NULL) 
         {
-            total = (total * 2) + temp->val;
-            temp = temp->next;
+            return 0;
         }
-        return total; 
+        getDecimalValue(head->next);
+        
+        total = total + head->val * pow(2,count++);
+        
+        return total;
     }
 };
