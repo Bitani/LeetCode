@@ -1,13 +1,19 @@
 class Solution {
-    public boolean isPowerOfFour(int num) {
-       if (num == 0)
+    public boolean isPowerOfFour(int n) {
+        if(n<=0)
+       {
+           return false;
+       }
+        if(n==1)
         {
-            return false;
+            return true;
         }
-  else
-  {
-        return (Math.log10(num) / Math.log10(4)) % 1 == 0;
-    }
+        if(n%4==0)
+        {
+            n=n/4;
+            return isPowerOfFour(n); 
+        }
+        return false;
 }
     
 }
